@@ -1,6 +1,7 @@
 <?php
 
-
+Route::get('/register', 'RegisterationController@register')->name('register');
+Route::post('/register', 'RegisterationController@store');
 
 Route::get('/login', 'SessionsController@loginView')->name('login');
 Route::post('/login', 'SessionsController@login');
@@ -15,6 +16,7 @@ Route::post('/items','ItemController@store');
 Route::get('/items/delete/{item}','ItemController@destroy');
 
 Route::get('/items/category/{category}','ItemController@index');
+
 Route::get('/items/edit/{item}','ItemController@edit');
 Route::post('/items/update/{item}','ItemController@update');
 /*

@@ -18,7 +18,7 @@ class SessionsController extends Controller
     }
 
     public function  login(){
-        //dd(request(['email','password']));
+
         if(!auth()->attempt(request(['email','password'])))
             return back()->withErrors(['message'=>'pleas check your password or username']);
 

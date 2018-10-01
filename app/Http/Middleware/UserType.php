@@ -14,9 +14,9 @@ class UserType
      * @return mixed
      */
     public function handle($request, Closure $next, $role = null) {
-        if($role == $request->user()->type)
+        if( auth()->check() && $role == $request->user()->type)
             return $next($request);
         else
-            return redirect()->home();
+            return redirect('login');
     }
 }
