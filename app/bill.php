@@ -3,7 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
-use app\order;
+use App\order;
 class bill extends Model
 {
     protected $fillable = [

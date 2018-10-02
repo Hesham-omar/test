@@ -4,7 +4,6 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use App\order;
-
 /**
  * @property mixed name
  * @property mixed price
@@ -17,7 +16,7 @@ class item extends Model
     ];
 
     public function orders(){
-        return $this->belongsToMany(order::class);
+        return $this->belongsToMany(order::class)->withPivot('amount');
     }
 
     public function category(){

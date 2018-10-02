@@ -12,7 +12,7 @@
       width: 250px;
       position: fixed;
       z-index: 1;
-      top: 140px;
+      top: 160px;
       right: 50px;
       background: #eee;
       overflow-x: hidden;
@@ -43,20 +43,29 @@
       .sidenav {padding-top: 15px;}
       .sidenav a {font-size: 18px;}
     }
-
+    html {
+        position: relative;
+        min-height: 100%;
+    }
+    body {
+        margin: 0 0 120px;
+    }
     .footer {
-      position: absolute;
-      right: 0;
-      bottom: 0;
-      left: 0;
-      padding: 1rem;
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        height: 100px;
+        width: 100%;
+        overflow: hidden;
       background-color: #efefef;
       text-align: center;
     }
   </style>
 
+
+        @include('layouts.nav')
+
   <body>
-    @include('layouts.nav')
 
     @if( $message = session('message') )
       <div id="flash" class="alert alert-success" role="alert">

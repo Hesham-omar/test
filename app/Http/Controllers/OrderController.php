@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\order;
+use App\item;
 use Illuminate\Http\Request;
 
 class OrderController extends Controller
@@ -12,9 +13,10 @@ class OrderController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
-    {
-        //
+    public function index() {
+        $orders=order::where('customer_id',auth()->id())->get();
+        //dd($orders->first()->items()->first()->amount);
+        return view('orders.list',compact('orders'));
     }
 
     /**
@@ -35,7 +37,25 @@ class OrderController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $order=new order();
+        $order->customer_id= auth()->user()->id;
+        $order->created_at= \Carbon\Carbon::now();
+        $order->updated_at=\Carbon\Carbon::now();
+
+        if($order->save()){
+            $items=item::whereIn('id',request('items'))->get()->toArray();
+            $amounts=array_filter(request('amount'));
+            $i=0;
+            //dd($amounts);
+            foreach ( $items as $item  ){
+
+                $order->items()->attach($item['id'],['amount'=> $amounts[$i]]);
+                $i++;
+            }
+            return redirect('/order');
+        }
+        else
+            return back()->withErrors('message','error while saving an order');
     }
 
     /**

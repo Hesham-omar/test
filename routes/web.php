@@ -19,6 +19,9 @@ Route::get('/items/category/{category}','ItemController@index');
 
 Route::get('/items/edit/{item}','ItemController@edit');
 Route::post('/items/update/{item}','ItemController@update');
+
+Route::post('/order','OrderController@store');
+Route::get('/order','OrderController@index');
 /*
  * 'phone' => 'required|regex:/(01)[0-9]{9}/'
  * */

@@ -12,7 +12,12 @@
             <a href="#" class="ml-auto">
               <strong>{{Auth::user()->name}}</strong>
             </a>
-            <a href="/logout" class="ml-auto">
+              @if(auth()->user()->type)
+                <a href="/order" class="ml-auto">
+                  orders History
+                </a>
+              @endif
+              <a href="/logout" class="ml-auto">
               logout
             </a>
             @else
