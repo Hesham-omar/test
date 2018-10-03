@@ -77,8 +77,10 @@
 
         if(mycheckbox.checked==true)
             myTextField.style.display='inline';
-        else
+        else {
             myTextField.style.display='none';
+            myTextField.value='';
+        }
     }
 </script>
 @endsection

@@ -36,8 +36,8 @@
 
         <div class="form-group">
             block <input type="checkbox"  id="block" name="block"  value="1">
-
         </div>
+
         <div class="form-group">
             <input type="submit" class="form-control btn btn-primary" id="submit" name="register" value="Register">
         </div>

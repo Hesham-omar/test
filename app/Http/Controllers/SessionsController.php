@@ -5,12 +5,12 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\User;
 
-class SessionsController extends Controller
-{
+class SessionsController extends Controller {
 
     public function __construct(){
-        $this->middleware('guest',[ 'except' => 'logout' ] );
-
+        $this->middleware('guest',[ 'only' => ['login','loginView'] ] );
+        $this->middleware('usertype:1',[ 'only' => 'current' ] );
+        $this->middleware('auth',[ 'only' => 'logout' ] );
     }
 
     public function loginView(){
@@ -28,5 +28,10 @@ class SessionsController extends Controller
     public function logout(){
         auth()->logout();
         return redirect()->home();
+    }
+
+    public function current(){
+        $user=auth()->user();
+        return view('sessions.test',compact('user'));
     }
 }

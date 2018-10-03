@@ -22,9 +22,12 @@ Route::post('/items/update/{item}','ItemController@update');
 
 Route::post('/order','OrderController@store');
 Route::get('/order','OrderController@index');
+
+Route::get('/myData','SessionsController@current');
 /*
  * 'phone' => 'required|regex:/(01)[0-9]{9}/'
  * */
-
+/*
 Route::redirect('/{any}', '/login');
 Route::redirect('/', '/login');
+*/

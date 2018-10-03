@@ -13,6 +13,10 @@ class OrderController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function __construct() {
+        $this->middleware('usertype:1');
+    }
+
     public function index() {
         $orders=order::where('customer_id',auth()->id())->get();
         //dd($orders->first()->items()->first()->amount);
@@ -44,11 +48,10 @@ class OrderController extends Controller
 
         if($order->save()){
             $items=item::whereIn('id',request('items'))->get()->toArray();
-            $amounts=array_filter(request('amount'));
+            $amounts=array_values(array_filter(request('amount')));
             $i=0;
             //dd($amounts);
             foreach ( $items as $item  ){
-
                 $order->items()->attach($item['id'],['amount'=> $amounts[$i]]);
                 $i++;
             }
@@ -64,8 +67,7 @@ class OrderController extends Controller
      * @param  \App\order  $order
      * @return \Illuminate\Http\Response
      */
-    public function show(order $order)
-    {
+    public function show(order $order) {
         //
     }
 
