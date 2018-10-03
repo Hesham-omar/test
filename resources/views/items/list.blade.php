@@ -75,10 +75,13 @@
         var myTextField = document.getElementById('amount'+i);
         var mycheckbox = document.getElementById(i);
 
-        if(mycheckbox.checked==true)
+        if(mycheckbox.checked==true) {
             myTextField.style.display='inline';
-        else
+        }
+        else {
             myTextField.style.display='none';
+            myTextField.value='';
+        }
     }
 </script>
 @endsection
