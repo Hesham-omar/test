@@ -3,18 +3,20 @@
 namespace App\Http\Controllers;
 
 use App\customer;
+use App\User;
 use Illuminate\Http\Request;
 
 class CustomerController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        //
+
+    public function __construct() {
+        $this->middleware('usertype:0');
+    }
+
+    public function index() {
+        $users=User::has('customer')->get();
+        //dd($users);
+        return view('customers.list',compact('users'));
     }
 
     /**
@@ -44,10 +46,12 @@ class CustomerController extends Controller
      * @param  \App\customer  $customer
      * @return \Illuminate\Http\Response
      */
-    public function show(customer $customer)
-    {
-        //
+    public function block(customer $customer) {
+        $customer->block=!$customer->block;
+        $customer->update();
+        return redirect('/customers');
     }
+
 
     /**
      * Show the form for editing the specified resource.
@@ -55,9 +59,11 @@ class CustomerController extends Controller
      * @param  \App\customer  $customer
      * @return \Illuminate\Http\Response
      */
-    public function edit(customer $customer)
-    {
-        //
+    public function deposit(customer $customer) {
+
+        $customer->balance=$customer->balance+(double) request('money');
+        $customer->update();
+        return redirect('/customers');
     }
 
     /**

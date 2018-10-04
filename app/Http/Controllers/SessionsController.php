@@ -9,7 +9,7 @@ class SessionsController extends Controller {
 
     public function __construct(){
         $this->middleware('guest',[ 'only' => ['login','loginView'] ] );
-        $this->middleware('usertype:1',[ 'only' => 'current' ] );
+        $this->middleware('auth',[ 'only' => 'current' ] );
         $this->middleware('auth',[ 'only' => 'logout' ] );
     }
 

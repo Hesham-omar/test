@@ -24,6 +24,11 @@ Route::post('/order','OrderController@store');
 Route::get('/order','OrderController@index');
 
 Route::get('/myData','SessionsController@current');
+
+Route::get('/customers','CustomerController@index');
+Route::get('/customers/block/{customer}','CustomerController@block');
+Route::post('/customers/deposit/{customer}','CustomerController@deposit');
+
 /*
  * 'phone' => 'required|regex:/(01)[0-9]{9}/'
  * */

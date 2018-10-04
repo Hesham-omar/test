@@ -11,10 +11,18 @@
               <strong>{{Auth::user()->name}}</strong>
             </a>
               @if(auth()->user()->type)
-                <a href="/order" class="ml-auto">
-                  orders History
-                </a>
+                    <a href="/order" class="ml-auto">
+                      orders History
+                    </a>
+               @else
+                    <a href="/customers" class="ml-auto">
+                        Customers Management
+                    </a>
+                    <a href="/items" class="ml-auto">
+                        Items Management
+                    </a>
               @endif
+
               <a href="/logout" class="ml-auto">
               logout
             </a>

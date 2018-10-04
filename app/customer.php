@@ -17,6 +17,7 @@ class customer extends Model{
     protected $fillable = [
         'block', 'balance'
     ];
+    public $primaryKey  = 'user_id';
 
     /**
      * customer constructor.

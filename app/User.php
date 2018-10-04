@@ -7,6 +7,7 @@ use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use App\customer;
 
+
 /**
  * @property int type
  * @property mixed password
@@ -28,7 +29,7 @@ class User extends Authenticatable
     }
 
     protected $fillable = [
-        'name', 'email', 'password','phone'
+        'name', 'email', 'phone'
     ];
 
     protected $hidden = [
@@ -37,6 +38,15 @@ class User extends Authenticatable
 
     public function setPasswordAttribute($pass) {
         $this->attributes['password'] = bcrypt($pass);
+    }
+
+    public function getCreatedAtAttribute($date) {
+        return \Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $date)->format('Y-m-d');
+    }
+
+    public function getUpdatedAtAttribute($date)
+    {
+        return \Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $date)->format('Y-m-d');
     }
 
     /**
