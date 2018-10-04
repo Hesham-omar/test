@@ -7,9 +7,9 @@
 
           
           @if(Auth::check())
-            <a href="/myData" class="ml-auto">
-              <strong>{{Auth::user()->name}}</strong>
-            </a>
+              <a href="/myData" class="ml-auto">
+                  <strong>{{Auth::user()->name}}</strong>
+              </a>
               @if(auth()->user()->type)
                     <a href="/order" class="ml-auto">
                       orders History
@@ -23,13 +23,16 @@
                     </a>
               @endif
 
-              <a href="/logout" class="ml-auto">
-              logout
-            </a>
+                <a href="/logout" class="ml-auto">
+                    logout
+                </a>
             @else
-            <a href="/login" class="ml-auto">
-              Login
-            </a>
+                <a href="/login" class="ml-auto">
+                  Login
+                </a>
+                <a href="/register" class="ml-auto">
+                    Register
+                </a>
           @endif
         </div>
 </div>

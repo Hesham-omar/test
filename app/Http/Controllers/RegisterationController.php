@@ -30,7 +30,7 @@ class RegisterationController extends Controller
             if(isset($request['block']))
                 $item1->block=$request['block'];
             $item1->save();
-            Auth::login($item1->user);
+            Auth::login($item);
         }
         return redirect()->home();
     }
