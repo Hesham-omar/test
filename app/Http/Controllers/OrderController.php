@@ -19,7 +19,7 @@ class OrderController extends Controller
 
     public function index() {
         $orders=order::where('customer_id',auth()->id())->get();
-        //dd($orders->first()->items()->first()->amount);
+        $orders= $orders->reverse();
         return view('orders.list',compact('orders'));
     }
 

@@ -26,11 +26,15 @@
                          @endforeach
                     </div>
                 </td>
-                <td>@foreach($order->items as $item)
+
+                <td>
+                    @foreach($order->items as $item)
                         <li>
                             {{$item->pivot->amount}}
                         </li>
-                    @endforeach </td>
+                    @endforeach
+                </td>
+
             </tr>
             @endforeach
 

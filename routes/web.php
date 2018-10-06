@@ -1,5 +1,8 @@
 <?php
-
+/*
+use App\Http\Resources\User as UserResource;
+use App\User;
+*/
 Route::get('/register', 'RegisterationController@register')->name('register');
 Route::post('/register', 'RegisterationController@store');
 
@@ -29,6 +32,13 @@ Route::get('/customers','CustomerController@index');
 Route::get('/customers/block/{customer}','CustomerController@block');
 Route::post('/customers/deposit/{customer}','CustomerController@deposit');
 
+/*
+Route::get('/user/{user}', function (User $user) {
+    return new UserResource($user);
+});
+
+
+*/
 /*
  * 'phone' => 'required|regex:/(01)[0-9]{9}/'
  * */
